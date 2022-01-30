@@ -1,0 +1,50 @@
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card mb-4 box-shadow mt-5">
+                    <div class="card-body">
+                        <a routerLink="/main/jobs">Back to list</a>
+                        <h3 class="card-title">Create new job</h3>
+                        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+                            <input type="hidden" formControlName="author" [value]="currentUser.id" />
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <input type="text" class="form-control" id="category" placeholder="Category" formControlName="jobCategory">
+
+                                <small style="color: red"
+                                    *ngIf="formGroup.get('jobCategory')?.touched && formGroup.get('jobCategory')?.hasError('required')">
+                                    This field is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="type">Type</label>
+                                <input type="text" class="form-control" id="type" placeholder="Type" formControlName="jobType">
+
+                                <small style="color: red"
+                                    *ngIf="formGroup.get('jobType')?.touched && formGroup.get('jobType')?.hasError('required')">
+                                    This field is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title" placeholder="Title" formControlName="title">
+
+                                <small style="color: red"
+                                    *ngIf="formGroup.get('title')?.touched && formGroup.get('title')?.hasError('required')">
+                                    This field is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2" [disabled]="formGroup.invalid">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

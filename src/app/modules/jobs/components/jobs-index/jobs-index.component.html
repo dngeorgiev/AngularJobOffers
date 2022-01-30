@@ -1,0 +1,17 @@
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <a *ngIf="hasPermissions" routerLink="/main/jobs/create" class="btn btn-primary mb-4">Add new</a>
+
+      <div class="row">
+        <div class="col-md-4" *ngFor="let job of jobs">
+          <app-job-item 
+            [job]="job"
+            (deleteClicked)="onDelete($event)"
+            (likeClicked)="onLike($event)"
+            (applyClicked)="onApply($event)"
+          ></app-job-item>
+        </div>
+      </div>
+    </div>
+  </div>

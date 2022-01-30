@@ -1,0 +1,30 @@
+<div class="card mb-4 box-shadow">
+    <div class="card-body">
+        <h3 class="card-title">{{ job.title }}</h3>
+        <p>
+            <span class="job-category">Category: {{ job.jobCategory }}</span><br>
+            <span class="job-category">Type: {{ job.jobType }}</span>
+        </p>
+        
+        <p class="card-text">{{ job.description }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary"
+                    (click)="onLike()"
+                    *ngIf="!hasPermissions">Like</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary"
+                    (click)="onApply()"
+                    *ngIf="!hasPermissions">Apply</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" 
+                    [routerLink]="['/main', 'jobs', 'job_applications', job.id]"
+                    *ngIf="hasPermissions && job.author === currentUser.id"
+                    >View applicants</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" 
+                    [routerLink]="['/main', 'jobs', 'edit', job.id]"
+                    *ngIf="hasPermissions && job.author === currentUser.id"
+                    >Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="hasPermissions && job.author === currentUser.id" (click)="onDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

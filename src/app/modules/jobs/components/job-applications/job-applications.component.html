@@ -1,0 +1,14 @@
+<div class="album py-5 bg-light mt-5">
+    <div class="container">
+        <a routerLink="/main/jobs">Back to list</a>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let jobApplication of jobApplications">
+            <app-job-application-item 
+                [jobApplication]="jobApplication"
+                (approved)="onApprove($event)"
+                (rejected)="onReject($event)"
+            ></app-job-application-item>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="card mb-4 box-shadow">
+    <div class="card-body">
+        <h3 class="card-title">{{ jobApplication.users.username }}</h3>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" 
+                    [ngClass]="{'active': jobApplication.status === 'approved'}"
+                    (click)="onApprove()"
+                    >Approve</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" 
+                    [ngClass]="{'active': jobApplication.status === 'rejected'}"
+                    (click)="onReject()"
+                    >Reject</button>
+            </div>
+        </div>
+    </div>
+</div>
